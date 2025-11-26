@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects – cynthia.dev</title>
+    <title>Projects – cynthia.dev</title> 
     <!-- <link rel="icon" type="image/jpeg" href="images/catpng.jpg" /> -->
     <link rel="icon" type="image/png" href="images/front-end-programming.png" />
     <link rel="stylesheet" href="style.css" />
@@ -26,9 +26,26 @@
     </header>
 
     <main>
-      <h1><em>You Got Games on Your Phone?</em></h1>
-      <p>p5.js game</p>
+      <h1 class="projects-title">Projects</h1>
+      <p class="projects-subtitle">A collection of my projects to date!</p>
+      <div class="project-cards">
+
+        <!-- test card-->
+        <a class="project-card" href="p5game.html">
+
+          <span class="project-year">2025</span>
+          <h2 class="project-title">Personal Narrative Game</h2>
+          <p class="project-description">
+            A p5.js pixel art game based on important memories of my life.
+          </p>
+          <button class="project-button">Play</button>
+          
+        </a>
+
+      </div>
     </main>
-    <script src="sketch.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/addons/p5.sound.min.js"></script>
   </body>
 </html>

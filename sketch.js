@@ -1,8 +1,30 @@
 let fragments = [];
 let plant;
+let bg;
+let y = 0;
+
+let font1;
+let font2;
+let font3;
+let font4;
+// let font5;
+// let font7;
+
+function preload() {
+  font1 = loadFont("fonts/font.ttf");   // first font
+  font2 = loadFont("fonts/font2.ttf");   // second font
+  font3 = loadFont("fonts/font3.ttf");
+  font4 = loadFont("fonts/font4.ttf");
+  // font5 = loadFont("font5.ttf");
+  // font7 = loadFont("Orbitron-VariableFont_wght.ttf");
+}
 
 function setup() {
-  createCanvas(800, 600);
+  bg = loadImage('images/hello-kitty-heart-pattern-bslk2qzd8cgpwpcr.jpg');
+  // createCanvas(720, 400);
+  createCanvas(800, 800);
+
+  // textSize(100);
 
   plant = new Plant(width * 0.5, height - 50);
 
@@ -14,16 +36,16 @@ function setup() {
   // bottom-up
   for (let i = 0; i < numFragments; i++) {
     let y = startY - i * spacing;
-    let label = "Core Memory " + (i + 1);
+    let label = "core memory " + (i + 1);
     fragments.push(new Fragment(100, y, 150, 50, label));
   }
 }
 
 function draw() {
-  background(220);
+  background(bg);
 
   // timeline
-  stroke(100);
+  stroke(242, 0, 157);
   line(175, 80, 175, height - 50);
   noStroke();
 
@@ -37,8 +59,14 @@ function draw() {
 
   fill(0);
   textAlign(CENTER);
-  textSize(16);
-  text("Click memories to grow the plant!", width / 2, 40);
+  textSize(28);
+  
+
+  // Draw "i" with font1
+  textFont(font4);
+  fill(232, 19, 157);
+  text("click memories to grow the plant!", width / 2, 40);
+
 }
 
 function mousePressed() {
@@ -61,10 +89,10 @@ class Fragment {
   }
 
   display() {
-    fill(255);
+    fill(226, 242, 0);
     stroke(0);
     rect(this.x, this.y, this.w, this.h, 5);
-    fill(0);
+    fill(3, 53, 255); // core memory
     noStroke();
     textAlign(CENTER, CENTER);
     text(this.label, this.x + this.w / 2, this.y + this.h / 2);
@@ -91,7 +119,8 @@ class Plant {
     fill(0);
     noStroke();
     textSize(16);
-    text("🌱", this.x, this.baseY - this.height - 10);
+    // text()
+    text("me", this.x, this.baseY - this.height - 10);
   }
 
   grow() {

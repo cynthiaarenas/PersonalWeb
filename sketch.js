@@ -25,7 +25,7 @@ function preload() {
 function setup() {
   bg = loadImage('images/hello-kitty-heart-pattern-bslk2qzd8cgpwpcr.jpg');
   // createCanvas(720, 400);
-  createCanvas(800, 800);
+  createCanvas(500, 800);
 
   // textSize(100);
 

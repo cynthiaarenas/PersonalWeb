@@ -14,6 +14,12 @@ let mem8;
 let mem9;
 let mem10;
 let mem11;
+let mem12;
+let mem13;
+var showVideo = true;
+var myVideo;
+let mem14;
+let mem15;
 
 function preload() {
   mem1 = loadImage("images/mem1.jpg")
@@ -27,6 +33,10 @@ function preload() {
   mem9 = loadImage("images/mem9.jpeg")
   mem10 = loadImage("images/mem10.jpg")
   mem11 = loadImage("images/mem11.jpg")
+  mem12 = loadImage("images/mem12.jpg")
+  mem13 = loadImage("images/mem13_imgupscaler.ai_Beta_2K.jpg")
+  mem14 = loadImage("images/mem14.jpg");
+  mem15 = loadImage("images/mem15.jpg");
 }
 
 function setup() {
@@ -46,6 +56,11 @@ function setup() {
     let label = "core memory " + (i + 1);
     fragments.push(new Fragment(100, y, 150, 50, label));
   }
+
+  myVideo = createDiv('  <iframe width="560" height="315" src="https://www.youtube.com/embed/fa49r2k2Igc" title="a 2000s baddie playlist to boost your confidence | y2k playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');
+  // <iframe width="560" height="315" src="https://www.youtube.com/embed/fa49r2k2Igc" title="a 2000s baddie playlist to boost your confidence | y2k playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  myVideo.position(0, 0);
+  myVideo.hide(); //start hidden 
 }
 
 function draw() {
@@ -91,6 +106,7 @@ function mousePressed() {
 
     if (!inside) {
       activePopup = null;
+      myVideo.hide();
     }
     return;
   }
@@ -98,6 +114,7 @@ function mousePressed() {
   //else check if a fragment was clicked
   for (let i = 0; i < fragments.length; i++) {
     if (fragments[i].isClicked(mouseX, mouseY)) {
+      if (activePopup !== 13) myVideo.hide(); // Hide if not video popup
       plant.grow();
       activePopup = i;
       return;
@@ -192,7 +209,7 @@ function drawPopup(index) {
     image(mem1, cx, cy - 20, imgW, imgH);
 
     //draw the caption
-    fill(252, 186, 3);
+    fill(235, 52, 198);
     textSize(22);
     text("where it all started", cx, cy + popupH * 0.35);
 
@@ -203,7 +220,7 @@ function drawPopup(index) {
   imageMode(CENTER);
   image(mem2, cx, cy - 20, imgW, imgH);
 
-  fill(3, 223, 252);
+  fill(18, 17, 18);
   textSize(22);
   text("brother, my bestfriend, 11yr age gap", cx, cy + popupH * .35);
 }
@@ -224,7 +241,7 @@ else if (index === 3) {
   imageMode(CENTER);
   image(mem4, cx, cy - 20, imgW, imgH);
 
-  fill(3, 223, 352);
+  fill(255, 255, 38);
 
   textSize(22);
   text("TIME JUMP -> same us just aged?...also first time in NYC!", cx, cy + popupH * 0.35);
@@ -246,7 +263,7 @@ else if (index === 5) {
   imageMode(CENTER);
   image(mem6, cx, cy - 20, imgW, imgH);
 
-  fill(27, 245, 71);
+  fill(0, 104, 71);
 
   textSize(22);
   text("Popsicles playing pacman--says it's from his days?", cx, cy + popupH * 0.4);
@@ -257,7 +274,7 @@ else if (index === 6) {
   imageMode(CENTER);
   image(mem7, cx, cy - 20, imgW, imgH);
 
-  fill(27, 245, 71);
+  fill(40, 75, 201);
 
   textSize(22);
   text("forgot to mention → transferred high schools", cx, cy + popupH * 0.4);
@@ -270,7 +287,7 @@ else if (index === 7) {
   imageMode(CENTER);
   image(mem8, cx, cy - 20, imgW, imgH);
 
-  fill(71, 73, 128);
+  fill(255, 167, 36);
 
   textSize(22);
   text("sunset", cx, cy + popupH * 0.4);
@@ -307,6 +324,71 @@ else if (index === 10) {
 
   textSize(22);
   text("milkshake", cx, cy + popupH * 0.4);
+}
+
+else if (index === 11) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem12, cx, cy - 20, imgW, imgH);
+
+  fill(255, 19, 3);
+
+  textSize(22);
+  text("bittersweet", cx, cy + popupH * 0.4);
+}
+else if (index === 12) {
+  let imgW = popupW * 0.8;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem13, cx, cy - 20, imgW, imgH);
+
+  fill(252, 3, 173);
+
+  textSize(22);
+  text("looking forward to the future", cx, cy + popupH * 0.4);
+}
+
+else if (index === 13) {
+  let videoW = popupW * 0.7;
+  let videoH = popupH * 1.65;
+  
+  myVideo.position(videoW, videoH);
+  myVideo.size(videoW, videoH);
+  myVideo.show();
+}
+else if (index === 14) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem14, cx, cy - 20, imgW, imgH);
+
+  fill(110, 94, 79);
+
+  textSize(22);
+  text("life recently", cx, cy + popupH * 0.45);
+}
+else if (index === 14) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem14, cx, cy - 20, imgW, imgH);
+
+  fill(110, 94, 79);
+
+  textSize(22);
+  text("life recently", cx, cy + popupH * 0.45);
+}
+else if (index === 15) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem15, cx, cy - 20, imgW, imgH);
+
+  fill(34, 46, 39);
+
+  textSize(22);
+  text("☆⋆｡𖦹°‧★end of 19☆⋆｡𖦹°‧★.", cx, cy + popupH * 0.45);
 }
 
   pop();

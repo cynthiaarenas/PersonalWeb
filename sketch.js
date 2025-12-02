@@ -6,11 +6,27 @@ let activePopup = null; //holds the index of the clicked memory
 let mem1;
 let mem2;
 let mem3;
+let mem4;
+let mem5;
+let mem6;
+let mem7; 
+let mem8;
+let mem9;
+let mem10;
+let mem11;
 
 function preload() {
   mem1 = loadImage("images/mem1.jpg")
   mem2 = loadImage("images/mem2.jpg")
   mem3 = loadImage("images/mem3.jpg")
+  mem4 = loadImage("images/mem4.jpg")
+  mem5 = loadImage("images/mem5.jpg")
+  mem6 = loadImage("images/mem6.jpg")
+  mem7 = loadImage("images/mem7.jpg")
+  mem8 = loadImage("images/mem8.jpg")
+  mem9 = loadImage("images/mem9.jpeg")
+  mem10 = loadImage("images/mem10.jpg")
+  mem11 = loadImage("images/mem11.jpg")
 }
 
 function setup() {
@@ -191,5 +207,107 @@ function drawPopup(index) {
   textSize(22);
   text("brother, my bestfriend, 11yr age gap", cx, cy + popupH * .35);
 }
+else if (index === 2) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+
+  imageMode(CENTER);
+  image(mem3, cx, cy - 20, imgW, imgH);
+  fill(color(random(255), random(255), random(255)));
+
+  textSize(22);
+  text("headstart, was the kid who cried the most :(", cx, cy + popupH * 0.4);
+}
+else if (index === 3) {
+  let imgW = popupW * 0.95;
+  let imgH = popupH * 0.5;
+  imageMode(CENTER);
+  image(mem4, cx, cy - 20, imgW, imgH);
+
+  fill(3, 223, 352);
+
+  textSize(22);
+  text("TIME JUMP -> same us just aged?...also first time in NYC!", cx, cy + popupH * 0.35);
+}
+else if (index === 4) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem5, cx, cy - 20, imgW, imgH);
+
+  fill(250, 254, 255);
+
+  textSize(22);
+  text("i fear i still love stuffies", cx, cy + popupH * 0.35);
+}
+else if (index === 5) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem6, cx, cy - 20, imgW, imgH);
+
+  fill(27, 245, 71);
+
+  textSize(22);
+  text("Popsicles playing pacman--says it's from his days?", cx, cy + popupH * 0.4);
+}
+else if (index === 6) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem7, cx, cy - 20, imgW, imgH);
+
+  fill(27, 245, 71);
+
+  textSize(22);
+  text("forgot to mention → transferred high schools", cx, cy + popupH * 0.4);
+  text("→ extreme culture shock. nothing like it", cx, cy + popupH * 0.43);
+  text("→ tbh… changed trajectory of my life ._.", cx, cy + popupH * 0.46);
+}
+else if (index === 7) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem8, cx, cy - 20, imgW, imgH);
+
+  fill(71, 73, 128);
+
+  textSize(22);
+  text("sunset", cx, cy + popupH * 0.4);
+}
+else if (index === 8) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem9, cx, cy - 20, imgW, imgH);
+
+  fill(255, 200, 18);
+
+  textSize(22);
+  text("got into college, yay!", cx, cy + popupH * 0.4);
+}
+else if (index === 9) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem10, cx, cy - 20, imgW, imgH);
+
+  fill(189, 187, 181);
+
+  textSize(22);
+  text("homesick, very homesick (some regrets here)", cx, cy + popupH * 0.4);
+}
+else if (index === 10) {
+  let imgW = popupW * 0.5;
+  let imgH = popupH * 0.8;
+  imageMode(CENTER);
+  image(mem11, cx, cy - 20, imgW, imgH);
+
+  fill(110, 94, 79);
+
+  textSize(22);
+  text("milkshake", cx, cy + popupH * 0.4);
+}
+
   pop();
 }

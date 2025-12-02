@@ -10,6 +10,9 @@ let font4;
 // let font5;
 // let font7;
 
+let activePopup = null; // will hold the index of the clicked memory
+
+
 function preload() {
   font1 = loadFont("fonts/font.ttf");   // first font
   font2 = loadFont("fonts/font2.ttf");   // second font
@@ -67,17 +70,30 @@ function draw() {
   fill(232, 19, 157);
   text("click memories to grow the plant!", width / 2, 40);
 
+   // draw popup if active
+  if (activePopup !== null) {
+    drawPopup(activePopup);
+  }
+
 }
 
 function mousePressed() {
-  // when you click a box, the plant grows
+  //if the popup is open, clicking anywhere closes it
+  if (activePopup !== null) {
+    activePopup = null;
+    return;
+  }
+
   for (let i = 0; i < fragments.length; i++) {
     let frag = fragments[i];
     if (frag.isClicked(mouseX, mouseY)) {
       plant.grow();
+      activePopup = i;
+      return;
     }
   }
 }
+
 
 class Fragment {
   constructor(x, y, w, h, label) {
@@ -126,4 +142,27 @@ class Plant {
   grow() {
     this.height += 20; // grows taller every time you click
   }
+}
+
+function drawPopup(index) {
+  //attempting popup box
+  fill(255, 240);
+  stroke(0);
+  strokeWeight(2);
+  rectMode(CENTER);
+
+  let popupW = 400;
+  let popupH = 250;
+
+  rect(width / 2, height / 2, popupW, popupH, 20);
+
+  //text inside popup
+  fill(0);
+  noStroke();
+  textAlign(CENTER, CENTER);
+  textSize(20);
+
+  // basic content for now
+  text("placeholder xxx " + fragments[index].label, width / 2, height / 2);
+
 }

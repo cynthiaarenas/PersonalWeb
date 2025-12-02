@@ -1,8 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: rgb(255, 255, 255);
-  /* font-family: Roboto, sans-serif; */
   font-family: "Avenir Next", "Segoe UI", Roboto, sans-serif;
 }
 
@@ -57,7 +55,6 @@ p {
   color: rgb(11, 11, 11);
   font-size: 20px;
   text-align: center;
-  /* background-color:  */
   width: 1000px;
   height: 100px;
   font-weight: bold;
@@ -75,7 +72,6 @@ h1 {
 }
 
 .intro-title {
-  /* font-family: "Avenir Next", sans-serif; */
   font-size: 4rem;
   font-weight: 400;
   margin-bottom: 10px;
@@ -87,7 +83,6 @@ h1 {
   font-size: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
-  /* align-self: auto; */
   font-family: "Avenir Next", "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
   color: #cf2273;
@@ -193,17 +188,92 @@ h1 {
 }
 
 /* p5 game page css styling */
-
 .game-bg {
-  background-image: url("images/powerpuff-girls-for-y2k-u3gmtf9zr04v8z11.jpg");
+  background-image: url("images/v882batch2-kul-16-e.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
+/*game-page wrapper*/
 .game-page {
   text-align: center;
   padding-top: 40px;
+}
+
+/* .y2k-window {
+  background: #cfcfce;
+  border: 3px solid #16de16;
+  width: 820px;
+  margin: 40px auto;
+  box-shadow: 5px 5px 0 #555;
+  padding-bottom: 10px;
+} */
+
+.y2k-titlebar {
+  background: linear-gradient(#ff66cc, #ff4fa3);
+  padding: 8px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 20px;
+  border-bottom: 3px solid black;
+}
+
+.y2k-title {
+  margin-left: 5px;
+}
+
+/*window buttons*/
+.y2k-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.y2k-btn {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px #aaa;
+  cursor: pointer;
+}
+
+/*sidebar buttons */
+.y2k-sidebar {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  background: #cfcfce;
+  border-bottom: 3px solid black;
+}
+
+.y2k-button {
+  padding: 6px 14px;
+  background: #e6e6e6;
+  border: 2px solid #000;
+  box-shadow:
+    inset 2px 2px #fff,
+    inset -2px -2px #888;
+  font-family: "Tahoma", sans-serif;
+  cursor: pointer;
+}
+
+.y2k-button:active {
+  box-shadow:
+    inset -2px -2px #fff,
+    inset 2px 2px #888;
+}
+
+/* game canvas*/
+#game-holder {
+  padding: 10px;
+  background: white;
+  border: 2px solid #000;
+  margin: 10px;
 }
 
 .game-page h1 {
@@ -234,4 +304,21 @@ h1 {
 #game-holder canvas {
   border: 5px solid white;
   border-radius: 10px;
+}
+
+.game-canvas {
+  height: auto;
+  min-height: 2400px;
+}
+
+.y2k-header {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.y2k-ui {
+  font-family: "Tahoma", "Verdana", sans-serif;
+}
+
+.y2k-pixel {
+  font-family: "PixelOperator", monospace;
 }

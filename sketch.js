@@ -2,39 +2,27 @@ let fragments = [];
 let plant;
 let bg;
 let y = 0;
-
-let font1;
-let font2;
-let font3;
-let font4;
-// let font5;
-// let font7;
-
-let activePopup = null; // will hold the index of the clicked memory
-
+let activePopup = null; //holds the index of the clicked memory
+let mem1;
+let mem2;
+let mem3;
 
 function preload() {
-  font1 = loadFont("fonts/font.ttf");   // first font
-  font2 = loadFont("fonts/font2.ttf");   // second font
-  font3 = loadFont("fonts/font3.ttf");
-  font4 = loadFont("fonts/font4.ttf");
-  // font5 = loadFont("font5.ttf");
-  // font7 = loadFont("Orbitron-VariableFont_wght.ttf");
+  mem1 = loadImage("images/mem1.jpg")
+  mem2 = loadImage("images/mem2.jpg")
+  mem3 = loadImage("images/mem3.jpg")
 }
 
 function setup() {
-  bg = loadImage('images/hello-kitty-heart-pattern-bslk2qzd8cgpwpcr.jpg');
-  // createCanvas(720, 400);
-  createCanvas(500, 800);
-
-  // textSize(100);
+  background(214, 214, 214);
+  createCanvas(856, 2000);
 
   plant = new Plant(width * 0.5, height - 50);
 
   // make boxes going upward for memories
-  let numFragments = 5;
-  let spacing = 100;
-  let startY = height - 100; // bottom-most memory
+  let numFragments = 20;
+  let spacing = 120;
+  let startY = height - 150; // bottom-most memory
 
   // bottom-up
   for (let i = 0; i < numFragments; i++) {
@@ -45,10 +33,10 @@ function setup() {
 }
 
 function draw() {
-  background(bg);
+  background(224);
 
   // timeline
-  stroke(242, 0, 157);
+  stroke(223, 181, 247);
   line(175, 80, 175, height - 50);
   noStroke();
 
@@ -64,36 +52,42 @@ function draw() {
   textAlign(CENTER);
   textSize(28);
   
-
-  // Draw "i" with font1
-  textFont(font4);
-  fill(232, 19, 157);
-  text("click memories to grow the plant!", width / 2, 40);
-
    // draw popup if active
   if (activePopup !== null) {
     drawPopup(activePopup);
   }
-
 }
 
 function mousePressed() {
-  //if the popup is open, clicking anywhere closes it
+  //if popup is open, check if click is outside popup
   if (activePopup !== null) {
-    activePopup = null;
+
+    let popupW = width * 0.6;
+    let popupH = height * 0.4;
+    let cx = width / 2;
+    let cy = height / 2;
+
+    let inside =
+      mouseX > cx - popupW/2 &&
+      mouseX < cx + popupW/2 &&
+      mouseY > cy - popupH/2 &&
+      mouseY < cy + popupH/2;
+
+    if (!inside) {
+      activePopup = null;
+    }
     return;
   }
 
+  //else check if a fragment was clicked
   for (let i = 0; i < fragments.length; i++) {
-    let frag = fragments[i];
-    if (frag.isClicked(mouseX, mouseY)) {
+    if (fragments[i].isClicked(mouseX, mouseY)) {
       plant.grow();
       activePopup = i;
       return;
     }
   }
 }
-
 
 class Fragment {
   constructor(x, y, w, h, label) {
@@ -105,14 +99,19 @@ class Fragment {
   }
 
   display() {
-    fill(226, 242, 0);
-    stroke(0);
-    rect(this.x, this.y, this.w, this.h, 5);
-    fill(3, 53, 255); // core memory
-    noStroke();
-    textAlign(CENTER, CENTER);
-    text(this.label, this.x + this.w / 2, this.y + this.h / 2);
-  }
+  //button style
+  stroke(4);
+  strokeWeight(3);
+  fill(255, 112, 191);
+  rect(this.x, this.y, this.w, this.h, 4);
+
+  fill('white');
+  noStroke();
+  textAlign(CENTER, CENTER);
+  textFont("Comic Sans MS"); 
+  textSize(16);
+  text(this.label, this.x + this.w / 2, this.y + this.h / 2);
+}
 
   isClicked(mx, my) {
     return (
@@ -140,28 +139,57 @@ class Plant {
   }
 
   grow() {
-    this.height += 20; // grows taller every time you click
+    this.height += 20; //grows taller every time you click
   }
 }
 
 function drawPopup(index) {
-  //attempting popup box
-  fill(255, 240);
-  stroke(0);
-  strokeWeight(2);
+  push();
   rectMode(CENTER);
 
-  let popupW = 400;
-  let popupH = 250;
+  let popupW = width * 0.8;
+  let popupH = height * 0.35;
+  let cx = width / 2;
+  let cy = height / 2;
 
-  rect(width / 2, height / 2, popupW, popupH, 20);
+  //shadow layer
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(cx + 6, cy + 6, popupW, popupH, 8);
 
-  //text inside popup
-  fill(0);
+  //main window
+  fill(255);
+  stroke(0);
+  strokeWeight(3);
+  rect(cx, cy, popupW, popupH, 8);
+
   noStroke();
   textAlign(CENTER, CENTER);
-  textSize(20);
+  textFont("Comic Sans MS");
 
-  text("placeholder xxx " + fragments[index].label, width / 2, height / 2);
+  //memory 1 clicked
+  if (index === 0) {
+    //draw the image
+    let imgW = popupW * 0.95;
+    let imgH = popupH * 0.6;
+    imageMode(CENTER);
+    image(mem1, cx, cy - 20, imgW, imgH);
 
+    //draw the caption
+    fill(252, 186, 3);
+    textSize(22);
+    text("where it all started", cx, cy + popupH * 0.35);
+
+  } 
+  else if (index === 1) {
+  let imgW = popupW * 0.95;
+  let imgH = popupH * 0.6;
+  imageMode(CENTER);
+  image(mem2, cx, cy - 20, imgW, imgH);
+
+  fill(3, 223, 252);
+  textSize(22);
+  text("brother, my bestfriend, 11yr age gap", cx, cy + popupH * .35);
+}
+  pop();
 }

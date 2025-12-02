@@ -322,3 +322,35 @@ h1 {
 .y2k-pixel {
   font-family: "PixelOperator", monospace;
 }
+
+/* y2k art*/
+.y2k-icons {
+  position: fixed;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  z-index: 9999; 
+  pointer-events: auto;
+}
+
+.left-icons {
+  left: 25px;
+}
+
+.right-icons {
+  right: 25px;
+}
+
+.y2k-icons img {
+  width: 70px;
+  image-rendering: pixelated;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.y2k-icons img:hover {
+  transform: scale(1.12);
+  filter: brightness(1.2);
+}
+

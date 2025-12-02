@@ -201,20 +201,17 @@ h1 {
   background-attachment: fixed;
 }
 
-/* everything inside <main class="game-page"> */
 .game-page {
   text-align: center;
   padding-top: 40px;
 }
 
-/* only h1 inside game-page */
 .game-page h1 {
   color: rgb(255, 255, 255);
   font-size: 2.2rem;
   margin-bottom: 10px;
 }
 
-/* only <p> tags inside game-page */
 .game-page p {
   color: rgb(255, 201, 251);
   font-size: 20px;
@@ -225,7 +222,6 @@ h1 {
   margin: 8px 0;
 }
 
-/* links only inside game-page */
 .game-page a {
   color: rgb(255, 240, 255);
   text-decoration: underline;
@@ -235,7 +231,6 @@ h1 {
   color: hotpink;
 }
 
-/* game holder */
 #game-holder canvas {
   border: 5px solid white;
   border-radius: 10px;

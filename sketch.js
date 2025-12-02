@@ -162,7 +162,6 @@ function drawPopup(index) {
   textAlign(CENTER, CENTER);
   textSize(20);
 
-  // basic content for now
   text("placeholder xxx " + fragments[index].label, width / 2, height / 2);
 
 }
